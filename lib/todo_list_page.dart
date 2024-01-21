@@ -8,11 +8,31 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
+  TextEditingController _textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Tarefas'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            TextField(
+              controller: _textEditingController,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        shape: const CircleBorder(),
+        onPressed: () {
+          print(_textEditingController.text);
+        },
+        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }
